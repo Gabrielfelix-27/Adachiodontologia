@@ -49,6 +49,37 @@ const setActiveNav = () => {
 };
 window.addEventListener('scroll', setActiveNav);
 
+// ─── Counter animation (trust bar stats) ───
+const animateCounter = (el) => {
+  const target = parseInt(el.dataset.target, 10);
+  const suffix = el.dataset.suffix || '';
+  const duration = 1600; // ms
+  const start = performance.now();
+
+  const tick = (now) => {
+    const elapsed = now - start;
+    const progress = Math.min(elapsed / duration, 1);
+    // easeOutQuart — começa rápido, desacelera no fim
+    const eased = 1 - Math.pow(1 - progress, 4);
+    const value = Math.round(target * eased);
+    el.textContent = value + suffix;
+    if (progress < 1) requestAnimationFrame(tick);
+    else el.textContent = target + suffix;
+  };
+  requestAnimationFrame(tick);
+};
+
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      animateCounter(entry.target);
+      counterObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('.stat[data-target]').forEach(el => counterObserver.observe(el));
+
 // ─── Reveal on scroll ───
 const revealEls = document.querySelectorAll('.reveal');
 const io = new IntersectionObserver(
