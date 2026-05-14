@@ -356,10 +356,13 @@ if (reviewsTrack) {
   `).join('');
 
   const totalSpan = document.getElementById('reviewsTotal');
+  const totalSpanMob = document.getElementById('reviewsTotalMob');
   if (totalSpan) totalSpan.textContent = reviews.length;
+  if (totalSpanMob) totalSpanMob.textContent = reviews.length;
 
   let reviewIdx = 0;
   const reviewCountSpan = document.getElementById('reviewsCount');
+  const reviewCountSpanMob = document.getElementById('reviewsCountMob');
   const REVIEW_GAP = 20;
 
   const getReviewStep = () => {
@@ -388,6 +391,7 @@ if (reviewsTrack) {
     }
     reviewsTrack.style.transform = `translateX(-${translate}px)`;
     if (reviewCountSpan) reviewCountSpan.textContent = reviewIdx + 1;
+    if (reviewCountSpanMob) reviewCountSpanMob.textContent = reviewIdx + 1;
   };
 
   const goPrev = () => { reviewIdx = Math.max(0, reviewIdx - 1); updateReviews(); };
