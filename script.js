@@ -526,7 +526,7 @@ if (reviewsTrack) {
     const name = nameInput.value.trim();
     const phone = phoneInput.value.trim();
     const msg = `Olá! Sou ${name} (${phone}) e gostaria de agendar minha *avaliação gratuita* na Adachi Odontologia. Vim pelo site! 😊`;
-    const wa = `https://wa.me/551147502605?text=${encodeURIComponent(msg)}`;
+    const wa = `https://wa.me/5511991984932?text=${encodeURIComponent(msg)}`;
     markSeen();
 
     // estado de sucesso visual antes de redirecionar
@@ -576,7 +576,7 @@ if (reviewsTrack) {
   const phone = document.getElementById('contactPhone');
   const email = document.getElementById('contactEmail');
   const message = document.getElementById('contactMessage');
-  const WHATSAPP_NUMBER = '551147502605'; // (11) 4750-2605
+  const WHATSAPP_NUMBER = '5511991984932'; // (11) 99198-4932 · canal de atendimento
 
   // Máscara BR no telefone
   phone?.addEventListener('input', (e) => {
